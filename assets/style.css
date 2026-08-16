@@ -184,6 +184,16 @@ p + p { margin-top: 0.75rem; }
 }
 .btn-primary:hover { background: var(--yellow-dim); border-color: var(--yellow-dim); color: #111; }
 
+/* "Note:" aside — quieter than body copy, with a yellow lead-in label. */
+.note {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  border-left: 3px solid var(--storm-gray);
+  padding-left: 0.85rem;
+  margin-top: 0.9rem;
+}
+.note strong { color: var(--yellow); }
+
 /* App store badges.
    Google's badge ships with clear space baked in; it is cropped off here, so
    the gap below supplies the clear space both vendors' guidelines ask for. */
