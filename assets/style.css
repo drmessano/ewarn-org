@@ -238,6 +238,11 @@ select {
   min-width: min(100%, 34rem);
   display: block;
   margin-inline: auto;
+  /* text-align-last centers only the value shown in the closed box. Using plain
+     text-align: center here would be overridden by the option rule below, which
+     keeps the dropdown list itself left-aligned. */
+  text-align: start;
+  text-align-last: center;
   padding: 0.7rem 0.9rem;
   font-size: 1rem;
   border-radius: 8px;
@@ -250,6 +255,7 @@ select {
   background-position: right 0.9rem center;
   cursor: pointer;
 }
+select option { text-align: left; }
 select:focus { outline: 2px solid var(--yellow); outline-offset: 1px; }
 /* Half width crowds the channel names on a phone — use the full column there. */
 @media (max-width: 768px) {
