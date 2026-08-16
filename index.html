@@ -86,7 +86,13 @@
 
   <section>
     <h2>Subscribe to Alerts</h2>
-    <label for="channel">Choose an alert channel — you can subscribe to more than one:</label>
+    <p>
+      Once you've installed Pushover on your phone or tablet, pick an alert channel below.
+      A subscribe button will appear — tap it and Pushover will add that channel to your
+      account, then alerts start arriving automatically. Subscribe to as many channels as
+      you want.
+    </p>
+    <label for="channel">Alert channel:</label>
     <select id="channel">
       <option value="" selected>— Select a channel —</option>
       <option value="ags">EWARNAlertAGS — Augusta-area (CSRA) Weather Alerts</option>
@@ -98,7 +104,7 @@
       <h3 id="subscribe-name"></h3>
       <p id="subscribe-desc"></p>
       <div id="subscribe-link">
-        <a class="btn btn-primary" id="subscribe-btn" href="#" rel="noopener">Subscribe on Pushover&nbsp;→</a>
+        <a class="btn btn-primary" id="subscribe-btn" href="#" rel="noopener">Click to Subscribe&nbsp;→</a>
       </div>
     </div>
   </section>
@@ -142,7 +148,7 @@
     document.getElementById("subscribe-desc").textContent = ch.desc;
     const btn = document.getElementById("subscribe-btn");
     btn.href = ch.url;
-    btn.textContent = "Subscribe to " + ch.name + " →";
+    btn.textContent = "Click to Subscribe to " + ch.name + " →";
     result.classList.add("active");
   });
 </script>
