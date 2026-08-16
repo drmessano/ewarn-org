@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EWARN — Emergency Warning and Response Network</title>
+<meta name="description" content="EWARN relays National Weather Service alerts from NOAAPort, EMWIN, and CAP feeds to your devices in real time via Pushover.">
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="hazard-stripe"></div>
+
+<header>
+  <img class="logo-img" src="assets/logo.png" alt="EWARN logo">
+  <div class="logo-text">EWARN</div>
+  <p class="tagline">Emergency Warning and Response Network</p>
+  <div class="badges">
+    <span class="badge">NOAAPort</span>
+    <span class="badge">EMWIN</span>
+    <span class="badge">CAP</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     SITE NAVIGATION — this nav appears on every page.
+     To add a page:
+       1. Copy page-template.html to yourpage.html and edit it.
+       2. Add a link below (and in the nav of every other page).
+     ============================================================ -->
+<nav>
+  <a href="index.html" class="active">Home</a>
+  <!-- Add new page links here, e.g.:
+  <a href="coverage.html">Coverage</a>
+  <a href="faq.html">FAQ</a>
+  -->
+</nav>
+
+<main>
+
+  <section>
+    <h2>About EWARN</h2>
+    <p>
+      EWARN is a real-time emergency alert network that receives official National Weather
+      Service products directly from <strong>NOAAPort</strong>, <strong>EMWIN</strong>, and
+      <strong>CAP</strong> feeds, and delivers them to your phone, tablet, or desktop within
+      seconds of issuance via <a href="https://pushover.net" rel="noopener">Pushover</a> —
+      no ads, no accounts to babysit, no social-media noise.
+    </p>
+  </section>
+
+  <section>
+    <h2>Why Pushover?</h2>
+    <p>
+      Email and SMS were never designed for urgent warnings — messages get delayed, buried in
+      an inbox, and give you no control over how they reach you.
+      EWARN delivers alerts through <a href="https://pushover.net" rel="noopener">Pushover</a>,
+      which pushes notifications to your devices the moment they're issued and supports true
+      message priorities. We apply those priorities to every alert: routine advisories arrive
+      quietly, while life-threatening warnings break through Do&nbsp;Not&nbsp;Disturb and
+      repeat until you acknowledge them.
+    </p>
+    <p class="dim">
+      We're not affiliated with Pushover — it's simply the best notification platform we've
+      found for the job. The app is a one-time $5 purchase per platform (no subscription) after
+      a free trial.
+    </p>
+    <div class="btn-row">
+      <a class="btn" href="https://apps.apple.com/us/app/pushover-notifications/id506088175" rel="noopener">Get Pushover for iPhone&nbsp;/&nbsp;iPad</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=net.superblock.pushover" rel="noopener">Get Pushover for Android</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Subscribe to Alerts</h2>
+    <label for="channel">Choose an alert channel — you can subscribe to more than one:</label>
+    <select id="channel">
+      <option value="" selected>— Select a channel —</option>
+      <option value="ags">EWARNAlertAGS — Augusta-area (CSRA) Weather Alerts</option>
+      <option value="storm">EWARNStorm — Tropical Weather Alerts</option>
+      <option value="emergency">EWARNEmergency — PDS &amp; Tornado Emergency (Nationwide)</option>
+    </select>
+
+    <div id="subscribe-result" role="region" aria-live="polite">
+      <h3 id="subscribe-name"></h3>
+      <p id="subscribe-desc"></p>
+      <div id="subscribe-link">
+        <a class="btn btn-primary" id="subscribe-btn" href="#" rel="noopener">Subscribe on Pushover&nbsp;→</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>EWARN &middot; Emergency Warning and Response Network &middot; NOAAPort / EMWIN / CAP alert relay.</p>
+  <p>Not affiliated with NOAA or the National Weather Service. Always have multiple ways to receive warnings.</p>
+</footer>
+
+<script>
+  const CHANNELS = {
+    ags: {
+      name: "EWARNAlertAGS",
+      desc: "Weather watches, warnings, and advisories for the Augusta, GA area (CSRA).",
+      url: "https://pushover.net/subscribe/EWARNAlertAGS-eu8vg47zazxnb1p"
+    },
+    storm: {
+      name: "EWARNStorm",
+      desc: "Tropical weather alerts — hurricane and tropical storm watches, warnings, and advisories.",
+      url: "https://pushover.net/subscribe/EWARNStorm-nd4u4y6ifxuwuup"
+    },
+    emergency: {
+      name: "EWARNEmergency",
+      desc: "The most dangerous alerts only: Particularly Dangerous Situation (PDS) warnings and Tornado Emergencies, nationwide.",
+      url: "https://pushover.net/subscribe/EWARNEmergency-zs7gskfdx35exxs"
+    }
+  };
+
+  const select = document.getElementById("channel");
+  const result = document.getElementById("subscribe-result");
+
+  select.addEventListener("change", () => {
+    const ch = CHANNELS[select.value];
+    if (!ch) {
+      result.classList.remove("active");
+      return;
+    }
+    document.getElementById("subscribe-name").textContent = ch.name;
+    document.getElementById("subscribe-desc").textContent = ch.desc;
+    const btn = document.getElementById("subscribe-btn");
+    btn.href = ch.url;
+    btn.textContent = "Subscribe to " + ch.name + " →";
+    result.classList.add("active");
+  });
+</script>
+
+</body>
+</html>
