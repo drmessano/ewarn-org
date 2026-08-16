@@ -116,9 +116,14 @@ nav a.active { background: rgba(0, 0, 0, 0.35); color: var(--yellow); }
    Main content
    -------------------------------------------------------------------------- */
 main {
-  max-width: 820px;
+  width: 75%;
+  max-width: 1400px;   /* keeps line length sane on ultrawide displays */
   margin: 0 auto;
-  padding: 1.5rem 1.5rem 4rem;
+  padding: 1.5rem 0 4rem;
+}
+/* 75% would leave far too little room on phones — go near full width there. */
+@media (max-width: 768px) {
+  main { width: auto; padding-left: 1.25rem; padding-right: 1.25rem; }
 }
 section {
   background: var(--bg-panel);
