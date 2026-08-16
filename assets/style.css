@@ -133,9 +133,6 @@ section {
   padding: 1.75rem;
   margin-top: 1.75rem;
 }
-/* Call-to-action section: everything inside is centered. */
-section.centered { text-align: center; }
-
 h1 { font-size: 1.7rem; margin: 1.5rem 0 0.25rem; text-transform: uppercase; letter-spacing: 0.04em; }
 h2 {
   font-size: 1.25rem;
@@ -205,11 +202,12 @@ p + p { margin-top: 0.75rem; }
 /* App store badges.
    Google's badge ships with clear space baked in; it is cropped off here, so
    the gap below supplies the clear space both vendors' guidelines ask for. */
-.store-lead { margin-top: 1.25rem; }
+.store-lead { margin-top: 1.25rem; text-align: center; }
 .store-badges {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 14px;
   margin-top: 0.85rem;
 }
@@ -256,8 +254,6 @@ select:focus { outline: 2px solid var(--yellow); outline-offset: 1px; }
 @media (max-width: 768px) {
   select,
   #subscribe-result { width: 100%; }
-  /* The badges stack on phones; ragged left edges look broken, so center them. */
-  .store-badges { justify-content: center; }
 }
 
 #subscribe-result {
