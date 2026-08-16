@@ -184,6 +184,26 @@ p + p { margin-top: 0.75rem; }
 }
 .btn-primary:hover { background: var(--yellow-dim); border-color: var(--yellow-dim); color: #111; }
 
+/* App store badges.
+   Google's badge ships with clear space baked in; it is cropped off here, so
+   the gap below supplies the clear space both vendors' guidelines ask for. */
+.store-lead { margin-top: 1.25rem; }
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 0.85rem;
+}
+.store-badges a {
+  display: inline-flex;
+  border-radius: 8px;
+  transition: transform 0.15s;
+}
+.store-badges a:hover { transform: translateY(-2px); }
+.store-badges a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
+.store-badges img { display: block; height: 48px; width: auto; }
+
 /* Subscribe dropdown */
 .get-app { margin-bottom: 1rem; font-size: 0.95rem; }
 
