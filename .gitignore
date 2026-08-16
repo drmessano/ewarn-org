@@ -1,0 +1,7 @@
+# Local tooling config (preview server, agent settings) — not part of the site
+.claude/
+
+# macOS / editor cruft
+.DS_Store
+._*
+*.swp
