@@ -228,7 +228,10 @@ label[for="channel"] {
   margin-bottom: 0.5rem;
 }
 select {
-  width: 100%;
+  width: 50%;
+  /* Never narrower than the longest channel name, but never wider than the
+     column either — otherwise "EWARNEmergency ..." gets truncated. */
+  min-width: min(100%, 34rem);
   padding: 0.7rem 0.9rem;
   font-size: 1rem;
   border-radius: 8px;
@@ -242,6 +245,10 @@ select {
   cursor: pointer;
 }
 select:focus { outline: 2px solid var(--yellow); outline-offset: 1px; }
+/* Half width crowds the channel names on a phone — use the full column there. */
+@media (max-width: 768px) {
+  select { width: 100%; }
+}
 
 #subscribe-result {
   margin-top: 1.25rem;
