@@ -256,6 +256,8 @@ select:focus { outline: 2px solid var(--yellow); outline-offset: 1px; }
 @media (max-width: 768px) {
   select,
   #subscribe-result { width: 100%; }
+  /* The badges stack on phones; ragged left edges look broken, so center them. */
+  .store-badges { justify-content: center; }
 }
 
 #subscribe-result {
